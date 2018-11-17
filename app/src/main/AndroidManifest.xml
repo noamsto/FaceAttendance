@@ -1,0 +1,64 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.kotlindev.noam.faceattendance">
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+
+    <application android:allowBackup="true"
+                 android:label="@string/app_name"
+                 android:icon="@mipmap/ic_launcher"
+                 android:roundIcon="@mipmap/ic_launcher_round"
+                 android:supportsRtl="false"
+                 android:theme="@style/MaterialTheme">
+
+
+        <activity
+                android:name="com.kotlindev.noam.faceattendance.MainActivity"
+                android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+                android:name="com.kotlindev.noam.faceattendance.SelectClassActivity"
+                android:launchMode="singleTop"
+                android:screenOrientation="portrait" />
+
+        <meta-data
+                android:name="com.google.firebase.ml.vision.DEPENDENCIES"
+                android:value="face" />
+        <activity
+                android:name="com.kotlindev.noam.faceattendance.CreateNewClassActivity"
+                android:screenOrientation="portrait" />
+        <activity
+                android:name="com.kotlindev.noam.faceattendance.ManageStudentsActivity"
+                android:screenOrientation="portrait" />
+        <activity
+                android:name="com.kotlindev.noam.faceattendance.ImageCaptureActivity"
+                android:screenOrientation="portrait" />
+        <activity
+                android:name="com.kotlindev.noam.faceattendance.ArrivedStudentsActivity"
+                android:parentActivityName="com.kotlindev.noam.faceattendance.SelectClassActivity"
+                android:screenOrientation="portrait">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value="com.kotlindev.noam.faceattendance.SelectClassActivity" />
+        </activity>
+        <activity
+                android:name="com.kotlindev.noam.faceattendance.StudentAttendanceActivity"
+                android:screenOrientation="portrait">
+
+        </activity>
+
+
+    </application>
+
+
+
+
+
+</manifest>
