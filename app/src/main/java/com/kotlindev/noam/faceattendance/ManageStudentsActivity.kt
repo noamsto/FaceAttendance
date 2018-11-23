@@ -65,7 +65,7 @@ class ManageStudentsActivity : AppCompatActivity(), AdapterView.OnItemClickListe
     private fun initSamplesDir(rootDir: File) {
         samplesDir = File(rootDir, STUDENTS_DIR)
         if (!samplesDir.exists()) {
-            Log.d(CreateNewClassActivity.TAG, "Creating New StudentSet dir: ${samplesDir.absolutePath}")
+            Log.d(EditClassActivity.TAG, "Creating New StudentSet dir: ${samplesDir.absolutePath}")
             samplesDir.mkdir()
         }
     }
@@ -111,7 +111,7 @@ class ManageStudentsActivity : AppCompatActivity(), AdapterView.OnItemClickListe
         val studentID = studentSetList.map { it.id }.max()?.plus(1) ?: 0
         val studentDir = File(samplesDir, "$newStudentName$studentID")
         if (!studentDir.exists()) {
-            Log.d(CreateNewClassActivity.TAG, "Creating New StudentSet dir: ${studentDir.absolutePath}")
+            Log.d(EditClassActivity.TAG, "Creating New StudentSet dir: ${studentDir.absolutePath}")
             studentDir.mkdir()
             studentSetList.add(StudentSet(newStudentName, studentDir, studentID, 0))
             studentSetAdapter.notifyDataSetChanged()

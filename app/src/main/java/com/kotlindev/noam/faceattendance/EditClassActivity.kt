@@ -4,7 +4,6 @@ import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.view.View
 import com.kotlindev.noam.faceattendance.ManageStudentsActivity.Companion.STUDENTS_DIR
 import com.kotlindev.noam.faceattendance.SelectClassActivity.Companion.CLASS_LIST_TAG
 import com.kotlindev.noam.faceattendance.SelectClassActivity.Companion.CLASS_OBJ_TAG
@@ -19,10 +18,10 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 @Suppress("RECEIVER_NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS", "UNCHECKED_CAST")
-class CreateNewClassActivity : AppCompatActivity() {
+class EditClassActivity : AppCompatActivity() {
 
     companion object {
-        const val TAG = "CreateNewClassActivity"
+        const val TAG = "EditClassActivity"
     }
     private val allStudentList : ArrayList<StudentSet> = ArrayList()
     private val selectedStudents : TreeSet<StudentSet> = TreeSet()
@@ -45,8 +44,11 @@ class CreateNewClassActivity : AppCompatActivity() {
         studentListViewAdapter = StudentsSetAdapter(this, allStudentList, selectedStudents,
                 markColor = Color.parseColor("#2e7d32"))
         student_list_view.adapter = studentListViewAdapter
-        student_list_view.setOnItemClickListener { parent, view, position, id ->
-            setSelected(allStudentList[position], view)
+        student_list_view.setOnItemClickListener { _, view, position, _ ->
+            setSelected(allStudentList[position])
+        }
+        confirm_edit_class_btn.setOnClickListener {
+            submitClass()
         }
         readAllStudents()
     }
@@ -65,7 +67,7 @@ class CreateNewClassActivity : AppCompatActivity() {
     }
 
 
-    private fun setSelected(currentItem: StudentSet, view: View) {
+    private fun setSelected(currentItem: StudentSet) {
         if (currentItem in selectedStudents)
             selectedStudents.remove(currentItem)
         else
@@ -73,8 +75,7 @@ class CreateNewClassActivity : AppCompatActivity() {
         studentListViewAdapter.notifyDataSetChanged()
     }
 
-    @Suppress("UNUSED_PARAMETER")
-    fun submitClass(view: View){
+    private fun submitClass() {
         if (class_name.text.isBlank()){
             toast("Please fill Class name.")
             return

@@ -32,7 +32,7 @@
                 android:name="com.google.firebase.ml.vision.DEPENDENCIES"
                 android:value="face" />
         <activity
-                android:name="com.kotlindev.noam.faceattendance.CreateNewClassActivity"
+                android:name="com.kotlindev.noam.faceattendance.EditClassActivity"
                 android:screenOrientation="portrait" />
         <activity
                 android:name="com.kotlindev.noam.faceattendance.ManageStudentsActivity"

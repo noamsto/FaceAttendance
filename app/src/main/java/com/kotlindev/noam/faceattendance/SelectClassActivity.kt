@@ -199,7 +199,7 @@ class SelectClassActivity : AppCompatActivity(), OnLongShortClickListener {
     private fun editClass(currentItem: ClassObj): Boolean {
         preEditClass = currentItem
         classes.remove(currentItem)
-        val createNewClassIntent = Intent(this, CreateNewClassActivity::class.java)
+        val createNewClassIntent = Intent(this, EditClassActivity::class.java)
         createNewClassIntent.putExtra(STUDENTS_DIR, samplesDir)
         createNewClassIntent.putExtra(CLASS_OBJ_TAG, currentItem)
         createNewClassIntent.putExtra(CLASS_LIST_TAG, classes)
