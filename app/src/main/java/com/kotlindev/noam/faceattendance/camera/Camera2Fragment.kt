@@ -15,6 +15,7 @@ import android.util.Log
 import android.util.Size
 import android.util.SparseIntArray
 import android.view.*
+import com.kotlindev.noam.faceattendance.R
 import com.kotlindev.noam.faceattendance.comparators.CompareSizesByArea
 import com.livinglifetechway.quickpermissions_kotlin.runWithPermissions
 import kotlinx.android.synthetic.main.fragment_camera2.*
@@ -183,7 +184,7 @@ class Camera2Fragment : Fragment() {
             }
 
             val displayRotation = activity!!.windowManager.defaultDisplay.rotation
-            sensorOrientation = frontCamCharacteristics.get(CameraCharacteristics.SENSOR_ORIENTATION)
+            sensorOrientation = frontCamCharacteristics.get(CameraCharacteristics.SENSOR_ORIENTATION)!!
             val swappedDimensions = areDimensionsSwapped(displayRotation)
 
             val displaySize = Point()
