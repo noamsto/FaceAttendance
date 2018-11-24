@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -10,8 +10,10 @@
     <android.support.constraint.ConstraintLayout
         android:id="@+id/new_student_area"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0"
         android:orientation="horizontal"
         >
 
@@ -25,6 +27,7 @@
             android:gravity="center"
             android:layout_margin="7dp"
             android:textSize="14sp"
+            app:layout_constrainedHeight="true"
             />
 
         <EditText
@@ -60,8 +63,11 @@
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="5"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/new_student_area"
+        app:layout_constraintBottom_toTopOf="@id/delete_block"
+        app:layout_constrainedHeight="true"
+        android:padding="5dp"
         android:orientation="vertical"
         android:layout_marginTop="7dp"
         >
@@ -97,8 +103,8 @@
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.5"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
         android:id="@+id/delete_block"
         android:padding="5dp">
 
@@ -126,4 +132,4 @@
     </android.support.constraint.ConstraintLayout>
 
 
-</LinearLayout>
+</android.support.constraint.ConstraintLayout>

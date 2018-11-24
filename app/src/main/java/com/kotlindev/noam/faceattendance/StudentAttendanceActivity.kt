@@ -20,6 +20,7 @@ import com.kotlindev.noam.faceattendance.datasets.StudentSet
 import kotlinx.android.synthetic.main.activity_student_attandence.*
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.toast
+import pl.droidsonroids.gif.GifDrawable
 import java.util.concurrent.atomic.AtomicBoolean
 
 class StudentAttendanceActivity : AppCompatActivity(), OnCameraFragmentInteractionListener,

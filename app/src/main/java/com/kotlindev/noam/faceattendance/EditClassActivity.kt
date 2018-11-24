@@ -44,7 +44,7 @@ class EditClassActivity : AppCompatActivity() {
         studentListViewAdapter = StudentsSetAdapter(this, allStudentList, selectedStudents,
                 markColor = Color.parseColor("#2e7d32"))
         student_list_view.adapter = studentListViewAdapter
-        student_list_view.setOnItemClickListener { _, view, position, _ ->
+        student_list_view.setOnItemClickListener { _, _, position, _ ->
             setSelected(allStudentList[position])
         }
         confirm_edit_class_btn.setOnClickListener {

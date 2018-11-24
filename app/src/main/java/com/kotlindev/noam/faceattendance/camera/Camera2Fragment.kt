@@ -346,9 +346,6 @@ class Camera2Fragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         textureView = camera_frag_preview
-        picture.setOnClickListener{
-            captureStillPicture()
-        }
     }
 
     /**
