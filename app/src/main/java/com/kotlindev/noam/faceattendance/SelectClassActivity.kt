@@ -116,12 +116,12 @@ class SelectClassActivity : AppCompatActivity(), OnLongShortClickListener {
     }
 
     private fun updateClasses() {
-        val invalidStudenSet = ArrayList<StudentSet>()
+        val invalidStudentSet = ArrayList<StudentSet>()
         for (classObj in classes ) {
             var numOfSamples = 0
             for (studentSet in classObj.studentList){
                 if (!studentSet.dir.exists()){
-                    invalidStudenSet.add(studentSet)
+                    invalidStudentSet.add(studentSet)
                     continue
                 }
                 studentSet.dir.walkTopDown().forEach {
@@ -133,8 +133,8 @@ class SelectClassActivity : AppCompatActivity(), OnLongShortClickListener {
                 studentSet.samplesCount = numOfSamples
             }
             // Remove students with no valid dir
-            classObj.studentList.removeAll(invalidStudenSet)
-            invalidStudenSet.clear()
+            classObj.studentList.removeAll(invalidStudentSet)
+            invalidStudentSet.clear()
         }
         if (classes.isEmpty() || !classes.last().isNew)
             classes.add(ClassObj("new", 0, TreeSet(), true))

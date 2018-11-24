@@ -1,15 +1,14 @@
-package com.android.noam.sellfyattendance.face.operations
+package com.kotlindev.noam.faceattendance.operations
 
 import android.graphics.Bitmap
 import android.media.Image
 import android.os.Environment
 import android.util.Log
-import com.kotlindev.noam.faceattendance.MainActivity
-import com.kotlindev.noam.faceattendance.comparators.CompareWithNull
 import com.google.android.gms.tasks.OnFailureListener
 import com.google.android.gms.tasks.OnSuccessListener
 import com.google.firebase.ml.vision.face.FirebaseVisionFace
 import com.google.firebase.ml.vision.face.FirebaseVisionFaceLandmark
+import com.kotlindev.noam.faceattendance.MainActivity
 import java.io.File
 import kotlin.math.max
 
@@ -29,19 +28,19 @@ internal class FaceDetector(
     override fun run() {
         bitMapImage = bmpTools.convertToBmpAndRotate(image, rotation)
         this.faceDetector.detectFace(bitMapImage,
-                OnSuccessListener {
+                OnSuccessListener { fbVisionFaceList ->
                     Log.d(TAG, "Run: onSuccess")
-                    Log.d(TAG, "Run: Detected ${it.size} Faces")
-                    if (it.isEmpty())
+                    Log.d(TAG, "Run: Detected ${fbVisionFaceList.size} Faces")
+                    if (fbVisionFaceList.isEmpty())
                     {
                         detectFaceFailureListener.onFailure(java.lang.Exception("Try again."))
                         bitMapImage.recycle()
 
                     }else{
-                        it.forEach {
+                        fbVisionFaceList.forEach {fbVisionFace ->
                             Log.d(TAG,"run OnSuccess")
-                            Log.i(TAG, "Detected Face: in this bounds ${it.boundingBox}")
-                            processFace(it)
+                            Log.i(TAG, "Detected Face: in this bounds ${fbVisionFace.boundingBox}")
+                            processFace(fbVisionFace)
                         }
                     }
                     faceDetector.close()
@@ -72,8 +71,7 @@ internal class FaceDetector(
         }
         var minX = rightEye.position.x.toInt()
         var maxX = leftEye.position.x.toInt()
-        var minY = arrayOf(rightEye.position.y, leftEye.position.y).
-                minWith(CompareWithNull())!!.toInt()
+        var minY = arrayOf(rightEye.position.y, leftEye.position.y).min()!!.toInt()
         var maxY = bottomMouth.position.y.toInt()
 
         val eyeDist = (leftEye.position.x - rightEye.position.x).toInt()

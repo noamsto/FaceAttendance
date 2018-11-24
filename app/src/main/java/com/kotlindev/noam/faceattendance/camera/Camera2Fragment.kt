@@ -235,7 +235,6 @@ class Camera2Fragment : Fragment() {
     }
 
 
-
     private fun createCameraPreview() {
         try {
 
@@ -271,7 +270,6 @@ class Camera2Fragment : Fragment() {
             e.printStackTrace()
         }
     }
-    
 
     /**
      * Capture a still picture. This method should be called when we get a response in
@@ -476,13 +474,13 @@ class Camera2Fragment : Fragment() {
 
             // Pick the smallest of those big enough. If there is no one big enough, pick the
             // largest of those not big enough.
-            if (bigEnough.size > 0) {
-                return Collections.min(bigEnough, CompareSizesByArea())
-            } else if (notBigEnough.size > 0) {
-                return Collections.max(notBigEnough, CompareSizesByArea())
-            } else {
-                Log.e(TAG, "Couldn't find any suitable preview size")
-                return choices[0]
+            return when {
+                bigEnough.size > 0 -> Collections.min(bigEnough, CompareSizesByArea())
+                notBigEnough.size > 0 -> Collections.max(notBigEnough, CompareSizesByArea())
+                else -> {
+                    Log.e(TAG, "Couldn't find any suitable preview size")
+                    choices[0]
+                }
             }
         }
     }

@@ -1,4 +1,4 @@
-package com.android.noam.sellfyattendance.face.operations
+package com.kotlindev.noam.faceattendance.operations
 
 import android.content.Context
 import android.graphics.Bitmap

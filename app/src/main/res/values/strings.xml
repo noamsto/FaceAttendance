@@ -10,5 +10,8 @@
     <string name="confirm_btn">Confirm</string>
     <string name="select_class_help">help: Long press on an a existing class to enter edit mode. Short press to enter attendance check.</string>
     <string name="delete_checkbox">Delete Mode</string>
+    <string name="manage_students">Manage students</string>
+    <string name="select_class">Select Class</string>
+    <string name="face_attendance">Face Attendance</string>
 </resources>
 

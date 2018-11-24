@@ -20,7 +20,7 @@
 
 
     <ImageView
-        android:id="@+id/croppedFaceView"
+        android:id="@+id/cropped_face_view"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:elevation="2dp"

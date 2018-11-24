@@ -10,7 +10,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:text="Attendance Selfy"
+        android:text="@string/face_attendance"
         android:layout_gravity="center"
         android:layout_margin="10dp"
         android:textSize="30sp"
@@ -27,11 +27,11 @@
         android:layout_height="0dp"
         android:layout_gravity="center"
         android:textSize="30sp"
-        android:text="Manage students"
+        android:text="@string/manage_students"
         android:layout_margin="7dp"
         android:layout_weight="1"
-        android:id="@+id/manage_students"
-        android:onClick="startManageStudentsActivity"/>
+        android:id="@+id/manage_students_btn"
+        />
 
 
     <Button
@@ -40,9 +40,9 @@
         android:layout_gravity="center"
         android:textSize="30sp"
         android:layout_margin="7dp"
-        android:text="Select Class"
+        android:text="@string/select_class"
         android:layout_weight="1"
-        android:id="@+id/selectSetBTN"
-        android:onClick="pickClass"/>
+        android:id="@+id/pick_class_btn"
+        />
 
 </android.support.v7.widget.LinearLayoutCompat>

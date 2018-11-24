@@ -7,10 +7,10 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.View
-import com.android.noam.sellfyattendance.face.operations.BmpOperations
-import com.android.noam.sellfyattendance.face.operations.FaceDetector
-import com.android.noam.sellfyattendance.face.operations.FisherFaces
-import com.android.noam.sellfyattendance.face.operations.OnModelReadyListener
+import com.kotlindev.noam.faceattendance.operations.BmpOperations
+import com.kotlindev.noam.faceattendance.operations.FaceDetector
+import com.kotlindev.noam.faceattendance.operations.FisherFaces
+import com.kotlindev.noam.faceattendance.operations.OnModelReadyListener
 import com.google.android.gms.tasks.OnFailureListener
 import com.google.android.gms.tasks.OnSuccessListener
 import com.kotlindev.noam.faceattendance.camera.Camera2Fragment
@@ -23,7 +23,7 @@ import org.jetbrains.anko.toast
 import java.util.concurrent.atomic.AtomicBoolean
 
 class StudentAttendanceActivity : AppCompatActivity(), OnCameraFragmentInteractionListener,
-        OnModelReadyListener, OnSuccessListener<Bitmap>, OnFailureListener {
+    OnModelReadyListener, OnSuccessListener<Bitmap>, OnFailureListener {
 
     private val modelReady = AtomicBoolean(false)
     private val shouldThrottle = AtomicBoolean(false)

@@ -6,8 +6,8 @@ import android.media.Image
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.kotlindev.noam.faceattendance.ManageStudentsActivity.Companion.CURRENT_STUDENT_DIR
-import com.android.noam.sellfyattendance.face.operations.BmpOperations
-import com.android.noam.sellfyattendance.face.operations.FaceDetector
+import com.kotlindev.noam.faceattendance.operations.BmpOperations
+import com.kotlindev.noam.faceattendance.operations.FaceDetector
 import com.google.android.gms.tasks.OnFailureListener
 import com.google.android.gms.tasks.OnSuccessListener
 import com.kotlindev.noam.faceattendance.camera.Camera2Fragment
@@ -62,9 +62,9 @@ class ImageCaptureActivity : AppCompatActivity(), OnCameraFragmentInteractionLis
 
     override fun onSuccess(croppedFace: Bitmap) {
         shouldThrottle.set(false)
-        if (croppedFaceView.drawable != null)
-            (croppedFaceView.drawable as BitmapDrawable).bitmap.recycle()
-        croppedFaceView.setImageBitmap(croppedFace)
+        if (cropped_face_view.drawable != null)
+            (cropped_face_view.drawable as BitmapDrawable).bitmap.recycle()
+        cropped_face_view.setImageBitmap(croppedFace)
         BmpOperations.writeBmpToFile(croppedFace, picFile)
         toast("Saved face under:${picFile.absolutePath}")
         picFile = File(studentDir, "${++faceInd}.jpg")
