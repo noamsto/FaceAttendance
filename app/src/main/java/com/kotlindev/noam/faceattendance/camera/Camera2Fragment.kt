@@ -275,7 +275,7 @@ class Camera2Fragment : Fragment() {
      * Capture a still picture. This method should be called when we get a response in
      * [.captureCallback] from both [.lockFocus].
      */
-    private fun captureStillPicture() {
+    fun captureStillPicture() {
         if (shouldThrottle.get()) {
             toast("Still working on previous picture.")
             return

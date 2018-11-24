@@ -46,11 +46,15 @@ class StudentAttendanceActivity : AppCompatActivity(), OnCameraFragmentInteracti
     override fun onCreate(savedInstanceState: Bundle?) { savedInstanceState
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_student_attandence)
+        val cameraFragment = Camera2Fragment.newInstance()
         savedInstanceState ?: supportFragmentManager.beginTransaction()
-                .add(R.id.camera_frag_container, Camera2Fragment.newInstance())
+                .add(R.id.camera_frag_container, cameraFragment)
                 .commit()
 
         classObj = intent.extras.getSerializable(SelectClassActivity.CLASS_OBJ_TAG) as ClassObj
+        finish_btn.setOnClickListener { finishSigning() }
+        fix_btn.setOnClickListener { fixLastAttendance() }
+        sign_btn.setOnClickListener { cameraFragment.captureStillPicture() }
         fisherFaces = FisherFaces(classObj.studentList, this)
         doAsync {
             fisherFaces.readAllStudentsFaces()
@@ -64,16 +68,15 @@ class StudentAttendanceActivity : AppCompatActivity(), OnCameraFragmentInteracti
     }
 
 
-    fun finishSigning(view: View) {
+    private fun finishSigning() {
         val arrivedStudentsIntent = Intent(this, ArrivedStudentsActivity::class.java)
         arrivedStudentsIntent.putExtra(ARRIVED_STUDENTS_LIST, arrivedStudents)
         startActivity(arrivedStudentsIntent)
-
     }
 
-    fun fixLastAttendance(view: View) {
+    private fun fixLastAttendance() {
         arrivedStudents.removeAt(arrivedStudents.lastIndex)
-        btn_fix.visibility = View.GONE
+        fix_btn.visibility = View.GONE
     }
 
     override fun onFailure(p0: Exception) {
@@ -101,18 +104,18 @@ class StudentAttendanceActivity : AppCompatActivity(), OnCameraFragmentInteracti
         predicted_student_name.text = student.name
         if (!arrivedStudents.contains(student)) {
             arrivedStudents.add(student)
-            if (btn_fix.visibility == View.GONE) {
-                btn_fix.visibility = View.VISIBLE
+            if (fix_btn.visibility == View.GONE) {
+                fix_btn.visibility = View.VISIBLE
                 doAsync {
                     Thread.sleep(4000)
                     runOnUiThread {
-                        btn_fix.visibility = View.GONE
+                        fix_btn.visibility = View.GONE
                     }
                 }
             }
         } else {
             toast("${student.name} is Already Registered :)")
-            btn_fix.visibility = View.GONE
+            fix_btn.visibility = View.GONE
         }
     }
 
