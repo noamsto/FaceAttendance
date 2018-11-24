@@ -17,5 +17,9 @@
     <string name="fix">Fix</string>
     <string name="sign_me">Sign me</string>
     <string name="stop_btn">Stop</string>
+    <string-array name="loading_model">
+        <item>"Please wait</item>
+        <item>"Creating model"</item>
+    </string-array>
 </resources>
 

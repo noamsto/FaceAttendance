@@ -3,6 +3,7 @@ package com.kotlindev.noam.faceattendance
 import android.content.Intent
 import android.graphics.Bitmap
 import android.media.Image
+import android.opengl.Visibility
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
@@ -20,7 +21,8 @@ import com.kotlindev.noam.faceattendance.datasets.StudentSet
 import kotlinx.android.synthetic.main.activity_student_attandence.*
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.toast
-import pl.droidsonroids.gif.GifDrawable
+import java.lang.Thread.sleep
+import java.util.concurrent.TimeUnit
 import java.util.concurrent.atomic.AtomicBoolean
 
 class StudentAttendanceActivity : AppCompatActivity(), OnCameraFragmentInteractionListener,
@@ -56,6 +58,7 @@ class StudentAttendanceActivity : AppCompatActivity(), OnCameraFragmentInteracti
         finish_btn.setOnClickListener { finishSigning() }
         fix_btn.setOnClickListener { fixLastAttendance() }
         sign_btn.setOnClickListener { cameraFragment.captureStillPicture() }
+        sign_btn.isClickable = false
         fisherFaces = FisherFaces(classObj.studentList, this)
         doAsync {
             fisherFaces.readAllStudentsFaces()
@@ -66,8 +69,19 @@ class StudentAttendanceActivity : AppCompatActivity(), OnCameraFragmentInteracti
 
     override fun onModelReady() {
         modelReady.set(true)
+        runOnUiThread {
+            val readyString  = arrayOf("Model Ready", "Model Ready")
+            loading_ftv.setTexts(readyString)
+            doAsync {
+                sleep(2000)
+                runOnUiThread {
+                    loading_ftv.stop()
+                    loading_ftv.visibility = View.GONE
+                }
+            }
+            sign_btn.isClickable = true
+        }
     }
-
 
     private fun finishSigning() {
         val arrivedStudentsIntent = Intent(this, ArrivedStudentsActivity::class.java)
