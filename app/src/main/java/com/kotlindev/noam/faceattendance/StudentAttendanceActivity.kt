@@ -3,26 +3,24 @@ package com.kotlindev.noam.faceattendance
 import android.content.Intent
 import android.graphics.Bitmap
 import android.media.Image
-import android.opengl.Visibility
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.View
-import com.kotlindev.noam.faceattendance.operations.BmpOperations
-import com.kotlindev.noam.faceattendance.operations.FaceDetector
-import com.kotlindev.noam.faceattendance.operations.FisherFaces
-import com.kotlindev.noam.faceattendance.operations.OnModelReadyListener
 import com.google.android.gms.tasks.OnFailureListener
 import com.google.android.gms.tasks.OnSuccessListener
 import com.kotlindev.noam.faceattendance.camera.Camera2Fragment
 import com.kotlindev.noam.faceattendance.camera.Camera2Fragment.OnCameraFragmentInteractionListener
 import com.kotlindev.noam.faceattendance.datasets.ClassObj
 import com.kotlindev.noam.faceattendance.datasets.StudentSet
+import com.kotlindev.noam.faceattendance.operations.BmpOperations
+import com.kotlindev.noam.faceattendance.operations.FaceDetector
+import com.kotlindev.noam.faceattendance.operations.FisherFaces
+import com.kotlindev.noam.faceattendance.operations.OnModelReadyListener
 import kotlinx.android.synthetic.main.activity_student_attandence.*
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.toast
 import java.lang.Thread.sleep
-import java.util.concurrent.TimeUnit
 import java.util.concurrent.atomic.AtomicBoolean
 
 class StudentAttendanceActivity : AppCompatActivity(), OnCameraFragmentInteractionListener,
