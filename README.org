@@ -1,0 +1,16 @@
+#+TITLE: Face Attendance
+#+AUTHOR: [[mailto:yalitz@gmail.com][Yali Tsufim]][[mailto:stellern@gmail.com][ & Noam Stolero]]
+
+This app is face detecting application for the cause of automatic attendance check.
+
+* Structure:   
+** Students/Persons database
+   Each student has at least 10 face images samples.
+** Classes database:
+   Each class has its student list.
+* Features:
+  * Create new student.
+  * Take 10 face pictures.
+  * Create a new class with students.
+  * Create a predicting *FisherFace* model for class.
+  * Take a picture and predict the student.
